@@ -19,7 +19,7 @@
     "strict": true,
     "target": "esnext",
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "resolveJsonModule": true,
     "isolatedModules": true
   },
