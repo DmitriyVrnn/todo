@@ -19,9 +19,11 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
-    'import/extensions': 0,
-    'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    'react/prop-types': 0,
+    'react/destructuring-assignment': 0,
+    'react/static-property-placement': 0,
+    'jsx-a11y/alt-text': 0,
+    'react/jsx-props-no-spreading': 0,
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
   },

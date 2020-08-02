@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import BasicLayout from '../components/shared/BasicLayout';
+import BasicLayout from '../src/components/shared/BasicLayout';
 
 const Index: React.FC = () => {
   return (

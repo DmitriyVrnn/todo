@@ -35,8 +35,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
+    "format": "prettier --write **/*.{js,jsx,ts,tsx}",
+    "lint": "eslint --fix **/*.{js,jsx,ts,tsx}"
   },
   "keywords": [],
   "author": "",

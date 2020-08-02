@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Head from 'next/head';
-import { Header } from '../containers/Header';
-import { SideMenu } from '../containers/SideMenu';
-import { Workspace } from '../containers/Workspace';
-import BasicLayout from '../components/shared/BasicLayout';
+import { Header } from '../src/containers/Header';
+import { SideMenu } from '../src/containers/SideMenu';
+import { Workspace } from '../src/containers/Workspace';
+import BasicLayout from '../src/components/shared/BasicLayout';
 
 const App: React.FC = () => (
   <BasicLayout>
