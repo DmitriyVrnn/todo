@@ -1,14 +1,26 @@
-import { TaskEnum } from "./types";
+import { ITask, TypesTasks, TaskEnum } from "./types";
+import { ActionTasks } from "./actions";
+import { createReducer } from "../../utils/createReducer";
 
-const initialState = {
-  message: "No announcement...",
+const initialState: ITask[] = [
+  {
+    id: 1,
+    text: "Initial task",
+    isCompleted: false,
+  },
+];
+
+const addTask = (state: ITask[], action: ActionTasks): ITask[] => {
+  return [
+    ...state,
+    {
+      id: action.payload.id,
+      text: action.payload.text,
+      isCompleted: action.payload.isCompleted,
+    },
+  ];
 };
 
-export const reducer = (state = initialState, action: any) => {
-  switch (action.type) {
-    case TaskEnum.ADD_TASK:
-      return [];
-    default:
-      return state;
-  }
-};
+export default createReducer<ITask[], TypesTasks, ActionTasks>(initialState, {
+  [TaskEnum.ADD_TASK]: addTask,
+});

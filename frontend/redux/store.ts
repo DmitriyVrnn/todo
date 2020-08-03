@@ -2,14 +2,10 @@ import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 // import epicMiddleware, { rootEpic } from "./epics";
 
-import { appReducer } from "./reducers";
-
-// export const configureStore = (preloadedState = {}) => {
-// //   return createStore(appReducer, preloadedState, composeWithDevTools());
-// // };
+import { rootReducer } from "./rootReducer";
 
 const initialState = {};
 
-const store = createStore(appReducer, initialState, composeWithDevTools());
+const store = createStore(rootReducer, initialState, composeWithDevTools());
 
 export default store;

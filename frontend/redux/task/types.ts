@@ -11,28 +11,23 @@ export interface ITask {
   isCompleted: boolean;
 }
 
-interface IAddTaskAction {
+export interface IAddTaskAction {
   type: typeof TaskEnum.ADD_TASK;
   payload: ITask;
 }
 
-interface IUpdateTaskAction {
-  type: typeof TaskEnum.UPDATE_TASK;
-  payload: ITask;
-}
-
-interface IRemoveTaskAction {
+export interface IRemoveTaskAction {
   type: typeof TaskEnum.REMOVE_TASK;
   payload: {
     id: number;
   };
 }
 
-interface ICompleteTaskAction {
+export interface ICompleteTaskAction {
   type: typeof TaskEnum.COMPLETE_TASK;
   payload: {
     id: number;
   };
 }
 
-export type TaskActionTypes = IAddTaskAction | ICompleteTaskAction | IUpdateTaskAction | IRemoveTaskAction;
+export type TypesTasks = typeof TaskEnum.ADD_TASK;
