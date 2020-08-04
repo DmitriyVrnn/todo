@@ -6,8 +6,8 @@ export enum TaskEnum {
 }
 
 export interface ITask {
-  id: number;
-  text: string;
+  id?: number;
+  description: string;
   isCompleted: boolean;
 }
 

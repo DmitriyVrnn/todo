@@ -5,7 +5,7 @@ import { createReducer } from "../../utils/createReducer";
 const initialState: ITask[] = [
   {
     id: 1,
-    text: "Initial task",
+    description: "Initial task",
     isCompleted: false,
   },
 ];
@@ -15,7 +15,7 @@ const addTask = (state: ITask[], action: ActionTasks): ITask[] => {
     ...state,
     {
       id: action.payload.id,
-      text: action.payload.text,
+      description: action.payload.description,
       isCompleted: action.payload.isCompleted,
     },
   ];
