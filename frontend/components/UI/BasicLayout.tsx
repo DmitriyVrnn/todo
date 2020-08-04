@@ -1,5 +1,5 @@
-import React, { ReactElement, ReactNode } from 'react';
-import { createGlobalStyle } from 'styled-components';
+import React, { ReactElement, ReactNode } from "react";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
  }
 
 h1 {
-    color: #323232;
+    color: #fff;
 }`;
 
 const BasicLayout = ({ children }: { children?: ReactNode }): ReactElement => (

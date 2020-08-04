@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-import { Aside } from './styled';
+import { Aside } from "./styled";
 
 export const SideMenu: React.FC = () => <Aside>Side</Aside>;

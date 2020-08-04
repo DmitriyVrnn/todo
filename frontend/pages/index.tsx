@@ -1,6 +1,6 @@
-import React from 'react';
-import Head from 'next/head';
-import BasicLayout from '../components/shared/BasicLayout';
+import React from "react";
+import Head from "next/head";
+import BasicLayout from "../components/UI/BasicLayout";
 
 const Index: React.FC = () => {
   return (
