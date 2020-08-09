@@ -6,7 +6,12 @@ export enum TaskEnum {
 }
 
 export interface ITask {
-  id?: number;
+  id: number | string;
+  description: string;
+  isCompleted: boolean;
+}
+
+export interface IAddTask {
   description: string;
   isCompleted: boolean;
 }
@@ -19,14 +24,14 @@ export interface IAddTaskAction {
 export interface IRemoveTaskAction {
   type: typeof TaskEnum.REMOVE_TASK;
   payload: {
-    id: number;
+    id: number | string;
   };
 }
 
 export interface ICompleteTaskAction {
   type: typeof TaskEnum.COMPLETE_TASK;
   payload: {
-    id: number;
+    id: number | string;
   };
 }
 

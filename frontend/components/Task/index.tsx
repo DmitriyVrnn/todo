@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 
 import { RootState } from "../../redux/rootReducer";
-import { ITask } from "../../redux/task/types";
+import { IAddTask } from "../../redux/task/types";
 
-import { addTask } from "../../redux/task/actions";
+import { addTask, removeTask } from "../../redux/task/actions";
 import { TaskList } from "./TaskList/TaskList";
 import { ModalWindow } from "../UI/ModalWindow";
 import { AddTask } from "./Forms/AddTask/AddTask";
@@ -21,9 +21,13 @@ export const Task: React.FC = () => {
 
   const openModal = () => setIsOpenModal(true);
 
-  const submitAddTask = (task: ITask) => {
+  const submitAddTask = (task: IAddTask) => {
     dispatch(addTask(task));
     setIsOpenModal(false);
+  };
+
+  const handleRemoveTask = (id: number | string) => {
+    dispatch(removeTask(id));
   };
 
   return (
@@ -38,7 +42,7 @@ export const Task: React.FC = () => {
       <Button variant="contained" color="primary" onClick={openModal}>
         Добавить задачу
       </Button>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} handleRemoveTask={handleRemoveTask} />
     </section>
   );
 };

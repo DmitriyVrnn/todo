@@ -1,11 +1,17 @@
-import { IAddTaskAction, IRemoveTaskAction, ITask, TaskEnum } from "./types";
+import { v4 as uuidv4 } from "uuid";
 
-export const addTask = (task: ITask): IAddTaskAction => ({
+import { IAddTask, IAddTaskAction, IRemoveTaskAction, TaskEnum } from "./types";
+
+export const addTask = (task: IAddTask): IAddTaskAction => ({
   type: TaskEnum.ADD_TASK,
-  payload: { ...task },
+  payload: {
+    description: task.description,
+    id: uuidv4(),
+    isCompleted: task.isCompleted,
+  },
 });
 
-export const removeTask = (id: number): IRemoveTaskAction => ({
+export const removeTask = (id: number | string): IRemoveTaskAction => ({
   type: TaskEnum.REMOVE_TASK,
   payload: { id },
 });
