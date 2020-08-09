@@ -1,7 +1,7 @@
-import { ActionTasks, IAddTaskAction, IRemoveTaskAction, ITask, TaskEnum, TypesTasks } from "./types";
+import { ActionTasks, IAddTaskAction, IRemoveTaskAction, IStateTask, TaskEnum, TypesTasks } from "./types";
 import { createReducer } from "../../utils/createReducer";
 
-const initialState: ITask[] = [
+const initialState: IStateTask[] = [
   {
     id: 1,
     description: "Initial task",
@@ -9,7 +9,7 @@ const initialState: ITask[] = [
   },
 ];
 
-const addTask = (state: Readonly<ITask[]>, action: IAddTaskAction) => {
+const addTask = (state: Readonly<IStateTask[]>, action: IAddTaskAction) => {
   const { description, isCompleted, id } = action.payload;
   return [
     ...state,
@@ -21,11 +21,11 @@ const addTask = (state: Readonly<ITask[]>, action: IAddTaskAction) => {
   ];
 };
 
-const removeTask = (state: Readonly<ITask[]>, action: IRemoveTaskAction) => {
+const removeTask = (state: Readonly<IStateTask[]>, action: IRemoveTaskAction) => {
   return [...state].filter((task) => task.id !== action.payload.id);
 };
 
-export default createReducer<ITask[], TypesTasks, ActionTasks>(initialState, {
+export default createReducer<IStateTask[], TypesTasks, ActionTasks>(initialState, {
   [TaskEnum.ADD_TASK]: addTask,
   [TaskEnum.REMOVE_TASK]: removeTask,
 });

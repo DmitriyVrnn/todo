@@ -1,22 +1,24 @@
 import React from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
-import { ITask } from "../../../redux/task/types";
+import { IStateTask } from "../../../redux/task/types";
 
 interface Props {
-  tasks: ITask[];
+  tasks: IStateTask[];
   handleRemoveTask: (id: number | string) => void;
+  handleUpdateTask: (id: number | string) => void;
 }
 
-export const TaskList = ({ tasks, handleRemoveTask }: Props) => {
+export const TaskList = ({ tasks, handleRemoveTask, handleUpdateTask }: Props) => {
   return (
     <ul>
-      {tasks.map((task: ITask) => (
+      {tasks.map((task: IStateTask) => (
         <li key={task.id}>
           <TaskItem
             description={task.description}
             isCompleted={task.isCompleted}
             id={task.id}
             onDelete={handleRemoveTask}
+            onUpdateTask={handleUpdateTask}
           />
         </li>
       ))}

@@ -5,20 +5,20 @@ export enum TaskEnum {
   COMPLETE_TASK = "COMPLETE_TASK",
 }
 
-export interface ITask {
+export interface IStateTask {
   id: number | string;
   description: string;
   isCompleted: boolean;
 }
 
-export interface IAddTask {
+export interface ITask {
   description: string;
   isCompleted: boolean;
 }
 
 export interface IAddTaskAction {
   type: typeof TaskEnum.ADD_TASK;
-  payload: ITask;
+  payload: IStateTask;
 }
 
 export interface IRemoveTaskAction {
