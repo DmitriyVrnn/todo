@@ -21,8 +21,8 @@ export const Task: React.FC = () => {
 
   const openModal = () => setIsOpenModal(true);
 
-  const submitAddTask = ({ description, isCompleted }: ITask) => {
-    dispatch(addTask({ description, isCompleted }));
+  const submitAddTask = (task: ITask) => {
+    dispatch(addTask(task));
     setIsOpenModal(false);
   };
 
