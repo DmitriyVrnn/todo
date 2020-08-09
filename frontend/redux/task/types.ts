@@ -30,4 +30,5 @@ export interface ICompleteTaskAction {
   };
 }
 
-export type TypesTasks = typeof TaskEnum.ADD_TASK;
+export type TypesTasks = typeof TaskEnum.ADD_TASK | typeof TaskEnum.REMOVE_TASK;
+export type ActionTasks = IAddTaskAction | IRemoveTaskAction;
