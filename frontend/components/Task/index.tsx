@@ -5,7 +5,7 @@ import { Button } from "@material-ui/core";
 import { RootState } from "../../redux/rootReducer";
 import { IStateTask, ITask } from "../../redux/task/types";
 
-import { addTask, removeTask } from "../../redux/task/actions";
+import { addTask, removeTask, updateTask } from "../../redux/task/actions";
 import { TaskList } from "./TaskList/TaskList";
 import { ModalWindow } from "../UI/ModalWindow";
 import { AddTask } from "./Forms/AddTask/AddTask";
@@ -39,6 +39,12 @@ export const Task: React.FC = () => {
     setCurrentModal("");
   };
 
+  const submitUpdateTask = (task: IStateTask) => {
+    console.log(task);
+    dispatch(updateTask(task));
+    setCurrentModal("");
+  };
+
   const handleRemoveTask = (id: number | string) => dispatch(removeTask(id));
 
   const renderModalWindow = () => {
@@ -55,7 +61,7 @@ export const Task: React.FC = () => {
         return (
           <ModalWindow className={classes.modal} open={currentModal === MODAL_WINDOW_UPDATE} onClose={onCloseModal}>
             <div className={classes.paper}>
-              <UpdateTask onSubmit={submitAddTask} task={currentTask} />
+              <UpdateTask onSubmit={submitUpdateTask} task={currentTask} />
             </div>
           </ModalWindow>
         );

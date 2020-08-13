@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { ITask, IAddTaskAction, IRemoveTaskAction, TaskEnum } from "./types";
+import { ITask, IAddTaskAction, IRemoveTaskAction, TaskEnum, IStateTask, IUpdateTaskAction } from "./types";
 
 export const addTask = (task: ITask): IAddTaskAction => ({
   type: TaskEnum.ADD_TASK,
@@ -14,4 +14,9 @@ export const addTask = (task: ITask): IAddTaskAction => ({
 export const removeTask = (id: number | string): IRemoveTaskAction => ({
   type: TaskEnum.REMOVE_TASK,
   payload: { id },
+});
+
+export const updateTask = (task: IStateTask): IUpdateTaskAction => ({
+  type: TaskEnum.UPDATE_TASK,
+  payload: task,
 });

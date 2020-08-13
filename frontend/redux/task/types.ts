@@ -28,6 +28,11 @@ export interface IRemoveTaskAction {
   };
 }
 
+export interface IUpdateTaskAction {
+  type: typeof TaskEnum.UPDATE_TASK;
+  payload: IStateTask;
+}
+
 export interface ICompleteTaskAction {
   type: typeof TaskEnum.COMPLETE_TASK;
   payload: {
@@ -35,5 +40,5 @@ export interface ICompleteTaskAction {
   };
 }
 
-export type TypesTasks = typeof TaskEnum.ADD_TASK | typeof TaskEnum.REMOVE_TASK;
-export type ActionTasks = IAddTaskAction | IRemoveTaskAction;
+export type TypesTasks = typeof TaskEnum.ADD_TASK | typeof TaskEnum.REMOVE_TASK | typeof TaskEnum.UPDATE_TASK;
+export type ActionTasks = IAddTaskAction | IRemoveTaskAction | IUpdateTaskAction;
