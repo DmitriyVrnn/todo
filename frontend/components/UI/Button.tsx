@@ -50,16 +50,23 @@ const baseButtonStyles = css<IButtonProps>`
 const buttonCustomize = css<IconProps & IButtonProps>`
   ${(props) => {
     if (props.isIconButton) {
-      return {
-        background: "none",
-        boxShadow: "none",
-      };
+      return css`
+        background: none;
+        box-shadow: none;
+        outline: none;
+        &:hover {
+          background: ${colors.graylighten1};
+        }
+        &:active {
+          background: ${colors.grayLightten2};
+        }
+      `;
     } else
-      return {
-        background: props.backgroundColor || colors.orange,
-        boxShadow:
-          "0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)",
-      };
+      return css`
+        background: ${props.backgroundColor || colors.orange};
+        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+      `;
   }}
 `;
 
