@@ -47,28 +47,26 @@ const baseButtonStyles = css<IButtonProps>`
   margin: 0 5px;
 `;
 
-const buttonCustomize = css<IconProps & IButtonProps>`
-  ${(props) => {
-    if (props.isIconButton) {
-      return css`
-        background: none;
-        box-shadow: none;
-        outline: none;
-        &:hover {
-          background: ${colors.graylighten1};
-        }
-        &:active {
-          background: ${colors.grayLightten2};
-        }
-      `;
-    } else
-      return css`
-        background: ${props.backgroundColor || colors.orange};
-        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-          0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-      `;
-  }}
-`;
+const buttonCustomize = css<IconProps & IButtonProps>`\n  ${(props) => {
+  if (props.isIconButton) {
+    return css`
+      background: none;
+      box-shadow: none;
+      outline: none;
+      &:hover {
+        background: ${colors.graylighten1};
+      }
+      &:active {
+        background: ${colors.grayLightten2};
+      }
+    `;
+  } else
+    return css`
+      background: ${props.backgroundColor || colors.orange};
+      box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    `;
+}}`;
 
 export const Icon = styled.span<IconProps>`
   align-items: center;
