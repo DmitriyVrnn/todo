@@ -1,13 +1,13 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import { IStateTask } from "../../../../redux/task/types";
+import { ITask } from "../../../../redux/task/types";
 
-interface Props {
-  onSubmit: (values: IStateTask) => void;
-  task: IStateTask;
+interface IUpdateTask {
+  onSubmit: (values: ITask) => void;
+  task: ITask;
 }
 
-export const UpdateTask: React.FC<Props> = ({ onSubmit, task }: Props) => {
+export const UpdateTask: React.FC<IUpdateTask> = ({ onSubmit, task }: IUpdateTask) => {
   return (
     <div>
       <h1>Редактирование задачи</h1>
@@ -17,7 +17,7 @@ export const UpdateTask: React.FC<Props> = ({ onSubmit, task }: Props) => {
           description: task.description,
           isCompleted: task.isCompleted,
         }}
-        onSubmit={(values: IStateTask) => onSubmit(values)}
+        onSubmit={(values: ITask) => onSubmit(values)}
       >
         {(formik) => {
           return (

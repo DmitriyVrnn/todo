@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { ITask, IAddTaskAction, IRemoveTaskAction, TaskEnum, IStateTask, IUpdateTaskAction } from "./types";
+import { ITask, IAddTaskAction, IRemoveTaskAction, TaskEnum, IUpdateTaskAction, IAddTask } from "./types";
 
-export const addTask = (task: ITask): IAddTaskAction => ({
+export const addTask = (task: IAddTask): IAddTaskAction => ({
   type: TaskEnum.ADD_TASK,
   payload: {
     description: task.description,
@@ -11,12 +11,15 @@ export const addTask = (task: ITask): IAddTaskAction => ({
   },
 });
 
-export const removeTask = (id: number | string): IRemoveTaskAction => ({
-  type: TaskEnum.REMOVE_TASK,
-  payload: { id },
-});
+export const removeTask = (id: number | string): IRemoveTaskAction => {
+  console.log(id);
+  return ({
+    type: TaskEnum.REMOVE_TASK,
+    payload: { id },
+  });
+}
 
-export const updateTask = (task: IStateTask): IUpdateTaskAction => ({
+export const updateTask = (task: ITask): IUpdateTaskAction => ({
   type: TaskEnum.UPDATE_TASK,
   payload: task,
 });

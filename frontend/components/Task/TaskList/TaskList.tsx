@@ -1,17 +1,17 @@
 import React from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
-import { IStateTask } from "../../../redux/task/types";
+import { ITask } from "../../../redux/task/types";
 
-interface Props {
-  tasks: IStateTask[];
+interface ITaskList {
+  tasks: ITask[];
   handleRemoveTask: (id: number | string) => void;
   handleUpdateTask: (id: number | string) => void;
 }
 
-export const TaskList = ({ tasks, handleRemoveTask, handleUpdateTask }: Props) => {
+export const TaskList = ({ tasks, handleRemoveTask, handleUpdateTask }: ITaskList) => {
   return (
     <ul>
-      {tasks.map((task: IStateTask) => (
+      {tasks.map((task: ITask) => (
         <li key={task.id}>
           <TaskItem
             description={task.description}

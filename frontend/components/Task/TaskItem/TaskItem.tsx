@@ -1,14 +1,18 @@
 import React from "react";
+import { ITask } from "../../../redux/task/types";
 
-interface Props {
-  description: string;
-  isCompleted: boolean;
-  id: number | string;
+interface ITaskItemProps {
   onDelete: (id: number | string) => void;
   onUpdateTask: (id: number | string) => void;
 }
 
-export const TaskItem: React.FC<Props> = ({ description, isCompleted, id, onDelete, onUpdateTask }: Props) => {
+export const TaskItem: React.FC<ITaskItemProps & ITask> = ({
+  description,
+  isCompleted,
+  id,
+  onDelete,
+  onUpdateTask,
+}: ITaskItemProps & ITask) => {
   return (
     <article>
       <h3>{description}</h3>
