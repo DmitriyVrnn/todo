@@ -3,11 +3,16 @@ export enum TaskEnum {
   REMOVE_TASK = "REMOVE_TASK",
   UPDATE_TASK = "UPDATE_TASK",
   COMPLETE_TASK = "COMPLETE_TASK",
+  SELECT_TASK = "SELECT_TASk",
+  OPEN_ADD_TASk_MODAL = "OPEN_ADD_TASk_MODAL",
+  OPEN_UPDATE_TASK_MODAL = "OPEN_UPDATE_TASK_MODAL",
+  CLOSE_CURRENT_MODAL_MODAL = "CLOSE_CURRENT_MODAL_MODAL",
 }
 
 export interface IStateTask {
   tasks: ITask[];
   selectedTask: ITask | null;
+  currentModalWindow: string;
 }
 
 export interface ITask {
@@ -38,6 +43,13 @@ export interface IUpdateTaskAction {
   payload: ITask;
 }
 
+export interface ISelectTask {
+  type: typeof TaskEnum.SELECT_TASK;
+  payload: {
+    id: number | string;
+  };
+}
+
 export interface ICompleteTaskAction {
   type: typeof TaskEnum.COMPLETE_TASK;
   payload: {
@@ -45,5 +57,4 @@ export interface ICompleteTaskAction {
   };
 }
 
-export type TypesTasks = typeof TaskEnum.ADD_TASK | typeof TaskEnum.REMOVE_TASK | typeof TaskEnum.UPDATE_TASK;
-export type ActionTasks = IAddTaskAction | IRemoveTaskAction | IUpdateTaskAction;
+export type ActionTasks = IAddTaskAction | IRemoveTaskAction | IUpdateTaskAction | ISelectTask;
