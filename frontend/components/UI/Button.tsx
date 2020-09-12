@@ -2,12 +2,13 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { colors } from "../../assets/styles/colors";
 
-interface IButtonProps {
+export interface IButtonProps {
   children?: React.ReactNode;
   backgroundColor?: string;
   color?: string;
-  icon?: any;
+  icon?: Pick<any, string>;
   iconColor?: string;
+  size?: "small" | "medium" | "large";
 }
 
 type IconProps = {
@@ -15,31 +16,37 @@ type IconProps = {
   iconColor?: string;
 };
 
-export const AppButton = ({ children, backgroundColor, color, icon, iconColor }: IButtonProps) => {
+export const AppButton = ({ children, backgroundColor, color, icon, iconColor, size }: IButtonProps) => {
   const isIconButton = icon && !children;
   return (
-    <Button isIconButton={isIconButton} color={color} backgroundColor={backgroundColor}>
+    <StyledButton size={size} isIconButton={isIconButton} color={color} backgroundColor={backgroundColor}>
       {icon && (
         <Icon isIconButton={isIconButton} iconColor={iconColor}>
           {icon}
         </Icon>
       )}
       {children}
-    </Button>
+    </StyledButton>
   );
+};
+
+const getSizeButton = (size: string) => {
+  const sizes: any = {
+    small: "4px 16px",
+    medium: "4px 20px",
+    large: "4px 60px",
+  };
+  return sizes[size];
 };
 
 const baseButtonStyles = css<IButtonProps>`
   border: none;
   max-height: 35px;
   cursor: pointer;
-  padding: 6px 16px;
+  padding: ${(props) => getSizeButton(props.size || "small")};
   font-size: 0.875rem;
   box-sizing: border-box;
-  transition: backgrond-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
   line-height: 1.75;
   border-radius: 7px;
   letter-spacing: 0.02857em;
@@ -50,7 +57,7 @@ const baseButtonStyles = css<IButtonProps>`
 const buttonCustomize = css<IconProps & IButtonProps>`\n ${(props) => {
   if (props.isIconButton) {
     return css`
-      background: none;
+      background: ${props.backgroundColor || "none"};
       box-shadow: none;
       outline: none;
       &:hover {
@@ -81,7 +88,7 @@ export const Icon = styled.span<IconProps>`
   font-size: 20px;
 `;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   ${baseButtonStyles}
   ${buttonCustomize}
 `;
