@@ -2,6 +2,8 @@ import React from "react";
 import App from "next/app";
 import Head from "next/head";
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { createWrapper } from "next-redux-wrapper";
 import { Provider } from "react-redux";
 import store from "../redux/store";
@@ -18,7 +20,9 @@ class MyApp extends App<Props> {
           <title>Hello</title>
         </Head>
         <Provider store={store}>
-          <Component {...pageProps} />
+          <DndProvider backend={HTML5Backend}>
+            <Component {...pageProps} />
+          </DndProvider>
         </Provider>
       </>
     );
