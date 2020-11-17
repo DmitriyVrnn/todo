@@ -6,7 +6,12 @@ import Tree from "./tree";
 
 import { TreeItem } from "./types";
 
-export const useUpdateTree = (root: TreeItem[]) => {
+type UpdateTreeTypes = {
+  updateTree: (dropTarget: TreeItem, dragTarget: TreeItem) => void;
+  treeData: { sourceTree: Tree<TreeItem> };
+};
+
+export const useUpdateTree = (root: TreeItem[]): UpdateTreeTypes => {
   const [treeData, setTreeData] = useImmer({
     sourceTree: new Tree<TreeItem>(root),
   });
