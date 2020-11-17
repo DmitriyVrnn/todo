@@ -1,14 +1,17 @@
 import { useImmer } from "use-immer";
-import TreeStructure from "./tree";
-import { TreeItem } from "./types";
+import { useCallback } from "react";
 import cloneDeep from "lodash.clonedeep";
+
+import Tree from "./tree";
+
+import { TreeItem } from "./types";
 
 export const useUpdateTree = (root: TreeItem[]) => {
   const [treeData, setTreeData] = useImmer({
-    sourceTree: new TreeStructure<TreeItem>(root),
+    sourceTree: new Tree<TreeItem>(root),
   });
 
-  const updateTree = (dropTarget: TreeItem, dragTarget: TreeItem) => {
+  const updateTree = useCallback((dropTarget: TreeItem, dragTarget: TreeItem) => {
     setTreeData((draft) => {
       const dragCurrentParent = draft.sourceTree.findParent({
         key: "id",
@@ -35,7 +38,7 @@ export const useUpdateTree = (root: TreeItem[]) => {
         draft.sourceTree = cloneDeep(draft.sourceTree);
       }
     });
-  };
+  }, []);
 
   return {
     updateTree,

@@ -26,7 +26,7 @@ export default class Tree<T> {
     }
 
     for (const node of nodes) {
-      if (node.childrens) {
+      if (node[childKey]) {
         const found = this.findNode({ childKey, nodes: node[childKey], key, target });
 
         if (found) return found;
@@ -34,14 +34,14 @@ export default class Tree<T> {
     }
   }
 
-  findParent({ nodes = this.tree, key, target, parent, childKey }: ParentArgs<T>): T | undefined {
+  findParent({ nodes = this.tree, key, target, parent, childKey }: ParentArgs<T>): T | void {
     for (const node of nodes) {
       if (node[key] === target) return parent;
     }
 
     for (const node of nodes) {
       if (node[childKey]) {
-        const found: T | undefined = this.findParent({
+        const found: T | void = this.findParent({
           childKey,
           nodes: node[childKey],
           key,
