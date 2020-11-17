@@ -6,11 +6,7 @@ import { TreeView } from "../components/UI/TreeView";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import TreeStructure from "../components/UI/TreeView/tree";
-import { TreeItem } from "../components/UI/TreeView/types";
-
-import { useImmer } from "use-immer";
-import cloneDeep from "lodash.clonedeep";
+import { useUpdateTree } from "../components/UI/TreeView/useUpdateTree";
 
 export default {
   title: "App/Tree",
@@ -101,44 +97,11 @@ const rootProps: any = [
 ];
 
 const Template: Story = () => {
-  const [treeData, setTreeData] = useImmer({
-    objectTree: new TreeStructure(rootProps),
-    dragCurrentParent: "",
-  });
+  const { updateTree, treeData } = useUpdateTree(rootProps);
 
-  const updateTree = (dropTarget: TreeItem | undefined, dragTarget: TreeItem) => {
-    setTreeData((draft) => {
-      const dragCurrentParent = draft.objectTree.findParent({
-        key: "id",
-        target: dragTarget.id,
-      });
-
-      if (dragCurrentParent && dragCurrentParent.id === dropTarget?.id) return;
-      else if (dragCurrentParent) {
-        dragCurrentParent.childrens.splice(
-          dragCurrentParent.childrens.findIndex((x: TreeItem) => x.id === dragTarget.id),
-          1,
-        );
-
-        const dragNewParent = draft.objectTree.find({
-          key: "id",
-          target: dropTarget?.id,
-        });
-
-        console.log(dragCurrentParent);
-        console.log(dragNewParent);
-
-        dragNewParent.childrens.push(dragTarget);
-
-        draft.objectTree = cloneDeep(draft.objectTree);
-      }
-    });
-  };
-
-  console.log("treeData.tree", treeData.objectTree.tree);
   return (
     <DndProvider backend={HTML5Backend}>
-      <TreeView data={treeData.objectTree.tree} updateTree={updateTree} />
+      <TreeView data={treeData.sourceTree.tree} updateTree={updateTree} />
     </DndProvider>
   );
 };

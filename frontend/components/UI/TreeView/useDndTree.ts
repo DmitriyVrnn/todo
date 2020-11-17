@@ -15,8 +15,8 @@ export interface DragObjectWithType {
 }
 
 export const useDndTree = (
-  node: TreeItem | undefined,
-  onUpdateTree?: (dropTarget: TreeItem | undefined, dragTarget: TreeItem) => void,
+  node: TreeItem,
+  onUpdateTree?: (dropTarget: TreeItem, dragTarget: TreeItem) => void,
 ): DndType => {
   const [{ isDragging }, drag] = useDrag({
     item: {

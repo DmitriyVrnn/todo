@@ -2,7 +2,7 @@ import React from "react";
 
 export interface TreeChildProps {
   name: TreeItem["name"];
-  node?: TreeItem;
+  node: TreeItem;
 }
 
 export interface TreeParentProps {
@@ -24,7 +24,7 @@ export type TreeViewProps = {
   icons?: {
     [iconId: string]: React.ReactElement;
   };
-  updateTree: (dropTarget: TreeItem | undefined, dragTarget: TreeItem) => void;
+  updateTree: (dropTarget: TreeItem, dragTarget: TreeItem) => void;
 };
 
 export enum TreeDndTypes {

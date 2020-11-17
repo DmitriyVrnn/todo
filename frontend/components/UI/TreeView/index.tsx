@@ -9,7 +9,7 @@ import { TreeItem, TreeViewProps } from "./types";
 export const TreeView: React.FC<TreeViewProps> = ({ data, updateTree }) => {
   const renderTree = () => {
     return data.map((node: TreeItem) => {
-      if (node.childrens && node.childrens.length > 0) {
+      if (node.childrens) {
         return (
           <TreeParent key={node.id} name={node.name} node={node} onUpdateTree={updateTree}>
             <TreeView data={node.childrens} updateTree={updateTree} />

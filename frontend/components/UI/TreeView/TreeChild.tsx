@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { TreeChildProps } from "./types";
-import { useDndTree } from "./use-dnd-tree";
+import { useDndTree } from "./useDndTree";
 
 export const TreeChild: React.FC<TreeChildProps> = ({ name, node }) => {
   const { drag, isDragging } = useDndTree(node);

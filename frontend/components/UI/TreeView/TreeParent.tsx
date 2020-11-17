@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { TreeParentProps } from "./types";
-import { useDndTree } from "./use-dnd-tree";
+import { useDndTree } from "./useDndTree";
 
 export const TreeParent: React.FC<TreeParentProps> = ({ name, children, onUpdateTree, node }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
